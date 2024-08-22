@@ -30,6 +30,12 @@
         <link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value="image/x-icon") | safe }}" href="{{ config.extra.favicon | safe }}">
     {% endif -%}
 
+	{% if config.extra.enable_analytics %}
+		{%- if config.extra.umami_website_id -%}
+			<script defer src="https://cloud.umami.is/script.js" data-website-id="{{ config.extra.umami_website_id }}"></script>
+		{% endif -%}
+	{% endif %}
+
     {%- block extra_head %}
     {% endblock extra_head -%}
 </head>

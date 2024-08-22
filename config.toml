@@ -26,6 +26,9 @@ enable_comments = false
 graphcomment_id = ""
 disqus_shortname = ""
 
+enable_analytics = false
+umami_website_id = ""
+
 # One of: blue, green, orange, pink, red.
 # Defaults to blue.
 # Append -light for light themes, e.g. blue-light
