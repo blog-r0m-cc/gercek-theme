@@ -49,7 +49,7 @@
                     <div class="logo">
                       {% block logo_content %}
                         {%- if config.extra.logo_text %}
-                            {{ config.extra.logo_text }}
+                            {{ config.extra.logo_text | safe }}
                         {% else %}
                             Terminimal theme
                         {% endif -%}
