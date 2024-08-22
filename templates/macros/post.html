@@ -26,7 +26,7 @@
 {% macro date(page) %}
     <span class="post-date">
         {%- if page.date %}
-            {{ page.date | date(format="%Y-%m-%d") }}
+            {{ page.date | date(format="%d/%m/%Y") }}
         {% endif -%}
     </span>
 {% endmacro post_date %}
@@ -82,7 +82,7 @@
         {% endif -%}
         <li class="post-list">
             <a href="{{ page.permalink | safe }}">
-                <span class="post-date">{{ page.date }}</span>
+                <span class="post-date">{{ page.date | date(format="%d/%m/%Y") }}</span>
                 :: <span class="post-list-title">{{ page.title }}</span></a>
             {{ post_macros::tags(page=page, short=true) }}
         </li>
