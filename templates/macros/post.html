@@ -70,6 +70,7 @@
         {{ post_macros::date(page=page) }}
     </div>
 
+    {{ post_macros::authors(page=page) }}
     {{ post_macros::tags(page=page) }}
 {% endmacro header %}
 
@@ -90,6 +91,18 @@
     </ul>
 {% endmacro list_posts %}
 
+{% macro authors(page) %}
+	{%- if page.authors %}
+		<div class="post-authors-inline">
+			<span>::</span>
+			<b>Yazar{%- if page.authors | length > 1 %}lar{% endif -%}: </b> 
+			{%- for author in page.authors %}
+				{{- author | safe -}}
+				{%- if not loop.last %}, {% endif -%}
+			{% endfor -%}
+		</div>
+	{% endif -%}
+{% endmacro authors %}
 
 {% macro tags(page, short=false) %}
     {%- if page.taxonomies and page.taxonomies.tags %}
