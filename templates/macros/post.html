@@ -104,7 +104,7 @@
 	{% endif -%}
 {% endmacro authors %}
 
-{% macro tags(page, short=false) %}
+{% macro tags(page, short=true) %}
     {%- if page.taxonomies and page.taxonomies.tags %}
         <span class="post-tags-inline">
             {%- if short %}
