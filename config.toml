@@ -91,6 +91,7 @@ use_full_hack_font = false
 #           in your site's "static" directory.
 # favicon = "/favicon.png"
 # favicon_mimetype = "image/png"
+# apple_touch_icon = "/apple-touch-icon.png"
 
 # Optional: Set how <title> elements are rendered.
 # Values:

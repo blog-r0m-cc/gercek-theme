@@ -28,7 +28,11 @@
 
     {% if config.extra.favicon -%}
         <link rel="shortcut icon" type="{{ config.extra.favicon_mimetype | default(value="image/x-icon") | safe }}" href="{{ config.extra.favicon | safe }}">
-    {%- endif %}
+    {% endif %}
+
+	{%- if config.extra.apple_touch_icon -%}
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ config.extra.apple_touch_icon | safe }}">
+	{%- endif %}
 
 	{% if config.extra.enable_analytics %}
 		{%- if config.extra.umami_website_id -%}
