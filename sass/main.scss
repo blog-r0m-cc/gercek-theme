@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-weight: bold;
   line-height: 1.3;
+  color: var(--accent);
 }
 
 h1 {
@@ -147,9 +148,8 @@ pre {
 }
 
 blockquote {
-  border-top: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
-  margin: 40px 0;
+  border: 1px dashed var(--accent);
+  margin: 0;
   padding: 25px;
 
   @media (max-width: $phone-max-width) {
@@ -181,7 +181,7 @@ blockquote {
     content: '>';
     display: block;
     position: absolute;
-    left: -25px;
+    left: -16px;
     color: var(--accent);
   }
 }
@@ -245,4 +245,20 @@ hr {
 
 .hidden {
   display: none;
+}
+
+sup.footnote-reference {
+  color: var(--accent);
+}
+
+div.footnote-definition {
+  sup.footnote-definition-label {
+    display: inline;
+    color: var(--accent);
+  }
+
+  p {
+    margin: 0;
+    display: inline;
+  }
 }
