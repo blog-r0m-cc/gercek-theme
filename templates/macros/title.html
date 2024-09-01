@@ -1,17 +1,17 @@
 {% macro title(page_title, main_title) %}
     {%- if config.extra.page_titles and config.extra.page_titles == "combined" -%}
         {%- if page_title -%}
-            {{ page_title }} | {{ main_title }}
+            {{ page_title | safe }} | {{ main_title }}
         {%- else -%}
-            {{ main_title }}
+            {{ main_title | safe }}
         {%- endif -%}
     {%- elif config.extra.page_titles and config.extra.page_titles == "page_only" -%}
         {%- if page_title -%}
-            {{ page_title }}
+            {{ page_title | safe }}
         {%- else -%}
-            {{ main_title }}
+            {{ main_title | safe }}
         {%- endif -%}
     {%- else -%}
-        {{ main_title }}
+        {{ main_title | safe }}
     {%- endif -%}
 {% endmacro title %}
