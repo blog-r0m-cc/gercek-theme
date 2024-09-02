@@ -152,10 +152,6 @@ blockquote {
   margin: 0;
   padding: 25px;
 
-  @media (max-width: $phone-max-width) {
-    padding-right: 0;
-  }
-
   &:before {
     content: '”';
     font-family: Georgia, serif;
