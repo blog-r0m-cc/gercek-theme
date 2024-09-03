@@ -248,6 +248,8 @@ sup.footnote-reference {
 }
 
 div.footnote-definition {
+  text-align: start;
+
   sup.footnote-definition-label {
     display: inline;
     color: var(--accent);
