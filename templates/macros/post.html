@@ -70,6 +70,7 @@
     </div>
 
     {{ post_macros::authors(page=page) }}
+    {{ post_macros::comments(page=page) }}
     {{ post_macros::tags(page=page) }}
 {% endmacro header %}
 
@@ -102,6 +103,15 @@
 		</div>
 	{% endif -%}
 {% endmacro authors %}
+
+{% macro comments(page) %}
+	{%- if config.extra.disqus_display_comment_count %}
+		<div class="post-comments-inline">
+			<span>::</span>
+			<a href="{{ page.permalink | safe }}#disqus_thread" data-disqus-identifier="{{ page.title | slugify }}"></a>
+		</div>
+	{% endif -%}
+{% endmacro comments %}
 
 {% macro tags(page, short=true) %}
     {%- if page.taxonomies and page.taxonomies.tags %}

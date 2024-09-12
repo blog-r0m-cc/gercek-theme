@@ -25,6 +25,7 @@ highlight_theme = "boron"
 enable_comments = false
 graphcomment_id = ""
 disqus_shortname = ""
+disqus_display_comment_count = false
 
 enable_analytics = false
 umami_website_id = ""
