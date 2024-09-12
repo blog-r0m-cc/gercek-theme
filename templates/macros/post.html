@@ -109,6 +109,7 @@
 		<div class="post-comments-inline">
 			<span>::</span>
 			<a href="{{ page.permalink | safe }}#disqus_thread" data-disqus-identifier="{{ page.title | slugify }}"></a>
+			<noscript>Yorumlar Yüklenemedi</noscript>
 		</div>
 	{% endif -%}
 {% endmacro comments %}
