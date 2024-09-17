@@ -44,7 +44,7 @@
     {% endblock extra_head %}
 </head>
 
-<body class="">
+<body>
 <div class="container">
     {% block header %}
     <header class="header">
@@ -68,6 +68,13 @@
                 </a>
             </div>
         </div>
+
+		{%- if config.extra.enable_random_quotes %}
+			<p id="random-quote">
+				<span id="quote-text"></span>
+				<span id="quote-author"></span>
+			</p>
+		{% endif -%}
 
         {% block header_menu %}
         {{ menu_macros::menu(config=config, current_path=current_path) }}
@@ -144,6 +151,11 @@
 
 {%- if config.extra.disqus_display_comment_count %}
 <script id="dsq-count-scr" src="https://{{ config.extra.disqus_shortname }}.disqus.com/count.js" async></script>
+{% endif -%}
+
+{%- if config.extra.enable_random_quotes %}
+<script src="{{ get_url(path=config.extra.random_quotes_file, trailing_slash=false) | safe }}"></script>
+<script src="{{ get_url(path="core/js/random_quotes.js", trailing_slash=false) | safe }}"></script>
 {% endif -%}
 </body>
 

@@ -30,6 +30,12 @@ disqus_display_comment_count = false
 enable_analytics = false
 umami_website_id = ""
 
+enable_random_quotes = false
+# This file should have a variable called "RANDOM_QUOTES" as an array.
+# Array should have elements of objects that has "text" and "author" keys.
+# Example: const RANDOM_QUOTES = [ { text: "Lorem ipsum dolor sit amet.", author: "Edward Newgate" } ]
+random_quotes_file = "js/quotes.js"
+
 # One of: blue, green, orange, pink, red.
 # Defaults to blue.
 # Append -light for light themes, e.g. blue-light

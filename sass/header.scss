@@ -93,4 +93,21 @@
       }
     }
   }
+
+  #random-quote {
+    display: none;
+    margin: 0;
+    margin-top: 20px;
+    opacity: .5;
+    text-align: justify;
+    
+    & > #quote-author {
+      display: none;
+
+      &:before {
+        content: "—";
+        padding-right: 8px;
+      }
+    }
+  }
 }
