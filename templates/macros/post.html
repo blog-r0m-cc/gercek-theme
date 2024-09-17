@@ -23,11 +23,13 @@
 
 
 {% macro date(page) %}
-    <span class="post-date">
-        {%- if page.date %}
-            {{ page.date | date(format="%d/%m/%Y") }}
-        {% endif -%}
-    </span>
+	{%- if not page.extra.hide_date %}
+		<span class="post-date-inline">
+			{%- if page.date %}
+				{{ page.date | date(format="%d/%m/%Y") }}
+			{% endif -%}
+		</span>
+	{% endif -%}
 {% endmacro post_date %}
 
 
@@ -67,11 +69,10 @@
     <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
     <div class="post-meta-inline">
         {{ post_macros::date(page=page) }}
+		{{ post_macros::authors(page=page) }}
+		{{ post_macros::comments(page=page) }}
+		{{ post_macros::tags(page=page) }}
     </div>
-
-    {{ post_macros::authors(page=page) }}
-    {{ post_macros::comments(page=page) }}
-    {{ post_macros::tags(page=page) }}
 {% endmacro header %}
 
 
@@ -84,7 +85,7 @@
         <li class="post-list">
             <a href="{{ page.permalink | safe }}">
                 <span class="post-date">{{ page.date | date(format="%d/%m/%Y") }}</span>
-                :: <span class="post-list-title">{{ page.title }}</span></a>
+				<span class="post-date-sep">::</span> <span class="post-list-title">{{ page.title }}</span></a>
             {{ post_macros::tags(page=page, short=true) }}
         </li>
     {% endfor -%}
@@ -93,24 +94,24 @@
 
 {% macro authors(page) %}
 	{%- if page.authors %}
-		<div class="post-authors-inline">
+		<span class="post-authors-inline">
 			<span>::</span>
 			<b>Yazar{%- if page.authors | length > 1 %}lar{% endif -%}: </b> 
 			{%- for author in page.authors %}
 				{{- author | safe -}}
 				{%- if not loop.last %}, {% endif -%}
 			{% endfor -%}
-		</div>
+		</span>
 	{% endif -%}
 {% endmacro authors %}
 
 {% macro comments(page) %}
-		<div class="post-comments-inline">
 	{%- if config.extra.disqus_display_comment_count and not page.extra.disqus_hide_comment_count %}
+		<span class="post-comments-inline">
 			<span>::</span>
 			<a href="{{ page.permalink | safe }}#disqus_thread" data-disqus-identifier="{{ page.title | slugify }}"></a>
 			<noscript>Yorumlar Yüklenemedi</noscript>
-		</div>
+		</span>
 	{% endif -%}
 {% endmacro comments %}
 
