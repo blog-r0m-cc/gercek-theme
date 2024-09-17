@@ -149,7 +149,14 @@
 {%- block extra_body %}
 {% endblock extra_body -%}
 
-{%- if config.extra.disqus_display_comment_count %}
+{% set _current_url = current_url | default(value=config.base_url) %}
+
+{%- if config.extra.enable_comments 
+	and config.extra.disqus_display_comment_count 
+	and not _current_url is containing("/archive") 
+	and not _current_url is containing("/tags") 
+	and not _current_url is containing("/files")
+%}
 <script id="dsq-count-scr" src="https://{{ config.extra.disqus_shortname }}.disqus.com/count.js" async></script>
 {% endif -%}
 

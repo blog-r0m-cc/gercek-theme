@@ -105,8 +105,8 @@
 {% endmacro authors %}
 
 {% macro comments(page) %}
-	{%- if config.extra.disqus_display_comment_count %}
 		<div class="post-comments-inline">
+	{%- if config.extra.disqus_display_comment_count and not page.extra.disqus_hide_comment_count %}
 			<span>::</span>
 			<a href="{{ page.permalink | safe }}#disqus_thread" data-disqus-identifier="{{ page.title | slugify }}"></a>
 			<noscript>Yorumlar Yüklenemedi</noscript>
