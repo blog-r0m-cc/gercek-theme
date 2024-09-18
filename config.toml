@@ -36,6 +36,8 @@ enable_random_quotes = false
 # Example: const RANDOM_QUOTES = [ { text: "Lorem ipsum dolor sit amet.", author: "Edward Newgate" } ]
 random_quotes_file = "js/quotes.js"
 
+enable_scroll_to_top_button = false
+
 # One of: blue, green, orange, pink, red.
 # Defaults to blue.
 # Append -light for light themes, e.g. blue-light
