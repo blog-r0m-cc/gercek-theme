@@ -168,6 +168,12 @@
 %}
 <script id="dsq-count-scr" src="https://{{ config.extra.disqus_shortname }}.disqus.com/count.js" async></script>
 {% endif -%}
+
+{%- if config.extra.enable_newsletter  %}
+	{%- if config.extra.newsletter_script_tag -%}
+		{{ config.extra.newsletter_script_tag | safe }}
+	{% endif %}
+{% endif -%}
 </body>
 
 </html>

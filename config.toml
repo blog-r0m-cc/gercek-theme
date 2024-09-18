@@ -30,6 +30,9 @@ disqus_display_comment_count = false
 enable_analytics = false
 umami_website_id = ""
 
+enable_newsletter = false
+newsletter_script_tag = ""
+
 enable_random_quotes = false
 # This file should have a variable called "RANDOM_QUOTES" as an array.
 # Array should have elements of objects that has "text" and "author" keys.
