@@ -13,7 +13,38 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	const randIndex = rand(1, RANDOM_QUOTES.length) - 1;
+	// Credits: https://stackoverflow.com/a/18652401/8277139.
+	// @expiry is in minutes
+	function setCookie(key, value, expiry) {
+		const expires = new Date();
+		expires.setTime(expires.getTime() + (expiry * 60 * 1000));
+
+		document.cookie = key + "=" + value + ";expires=" + expires.toUTCString();
+	}
+
+	function getCookie(key) {
+		const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+		return keyValue ? keyValue[2] : null;
+	}
+
+	function eraseCookie(key) {
+		const keyValue = getCookie(key);
+		setCookie(key, keyValue, "-1");
+	}
+
+	const lastIndexCookie = "random_quotes_last_index";
+	let randIndex = -1;
+
+	while (true) {
+		const i = rand(1, RANDOM_QUOTES.length) - 1;
+
+		if (RANDOM_QUOTES.length > 1 && getCookie(lastIndexCookie) == i)
+			continue;
+
+		randIndex = i;
+		break;
+	}
+
 	const randQuote = RANDOM_QUOTES[randIndex];
 
 	if (!randQuote.text) {
@@ -29,4 +60,6 @@
 	}
 
 	document.querySelector("#random-quote").style.display = "block";
+
+	setCookie(lastIndexCookie, randIndex, 60);
 })();
