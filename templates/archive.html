@@ -9,7 +9,24 @@
         <h1 class="post-title">{{ page.title }}</h1>
 
         {% set section = get_section(path="_index.md") %}
+			{% for sub_dir in page.extra.archive_dirs %}
+				{% set sub_section = get_section(path=sub_dir ~ "/_index.md") %}
+				{% set post_count = sub_section.pages | length %}
 
-        {{ post_macros::list_posts(pages=section.pages) }}
+				{% if not sub_section.title %}
+					{% continue %}
+				{% endif %}
+
+				<h2>{{ sub_section.title }}</h2>
+				{% if post_count > 0 %}
+					{{ post_macros::list_posts(pages=sub_section.pages) }}
+
+					{% if not loop.last %}
+						<br />
+					{% endif %}
+				{% else %}
+					<p>Herhangi bir yazı bulunamadı.</p>
+				{% endif %}
+			{% endfor %}
     </div>
 {% endblock content %}
