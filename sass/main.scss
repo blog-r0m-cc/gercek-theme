@@ -152,15 +152,6 @@ blockquote {
   margin: 0;
   padding: 25px;
 
-  &:before {
-    content: '”';
-    font-family: Georgia, serif;
-    font-size: 3.875rem;
-    position: absolute;
-    left: -40px;
-    top: -20px;
-  }
-
   p:first-of-type {
     margin-top: 0;
   }
