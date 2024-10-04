@@ -4,6 +4,13 @@
 {% import "macros/post.html" as post_macros -%}
 {% import "macros/title.html" as title_macros -%}
 
+{% set _current_url = current_url | default(value=config.base_url) %}
+
+{% if _current_url is containing("http://127.0.0.1") 
+   or _current_url is containing("http://localhost") %}
+   {% set is_localhost = true %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="{%- if config.default_language -%}{{ config.default_language }}{%- else -%}en{%- endif -%}">
 
@@ -96,7 +103,7 @@
 			{% if page_len >= 1 %}
 				{%- for page in show_pages %}
 					<div class="post on-list">
-						{{ post_macros::header(page=page) }}
+						{{ post_macros::header(page=page, is_localhost=is_localhost) }}
 
 						{{ post_macros::content(page=page, summary=true, show_only_description=page.extra.show_only_description | default(value=false)) }}
 					</div>
@@ -155,8 +162,6 @@
 {%- block extra_body %}
 {% endblock extra_body -%}
 
-{% set _current_url = current_url | default(value=config.base_url) %}
-
 {%- if config.extra.enable_scroll_to_top_button %}
 <script src="{{ get_url(path="core/js/scroll.js", trailing_slash=false) | safe }}"></script>
 {% endif -%}
@@ -168,6 +173,7 @@
 
 {%- if config.extra.enable_comments 
 	and config.extra.disqus_display_comment_count 
+	and not is_localhost
 	and not _current_url is containing("/archive") 
 	and not _current_url is containing("/tags") 
 	and not _current_url is containing("/files")

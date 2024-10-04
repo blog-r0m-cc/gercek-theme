@@ -65,12 +65,14 @@
 {% endmacro earlier_later %}
 
 
-{% macro header(page) %}
+{% macro header(page, is_localhost) %}
     <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
     <div class="post-meta-inline">
         {{ post_macros::date(page=page) }}
 		{{ post_macros::authors(page=page) }}
-		{{ post_macros::comments(page=page) }}
+		{% if not is_localhost %}
+			{{ post_macros::comments(page=page) }}
+		{% endif %}
 		{{ post_macros::tags(page=page) }}
     </div>
 {% endmacro header %}
