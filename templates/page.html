@@ -6,35 +6,35 @@
 
 {% block content %}
     <div class="post">
-		{% if page.extra.toc and page.toc | length > 0 %}
+		{%- if page.extra.toc and page.toc | length > 0 %}
 			<div class="toc-container">
 				<div class="toc">
 					<div class="toc-header">İçerik</div>
 
 					<ol class="toc-items">
-						{% for h1 in page.toc %}
+						{%- for h1 in page.toc %}
 							<li class="toc-item">
 								<a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
-								{% if h1.children %}
+								{%- if h1.children %}
 									<ol>
-										{% for h2 in h1.children %}
+										{%- for h2 in h1.children %}
 											<li>
 												<a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
 											</li>
-										{% endfor %}
+										{% endfor -%}
 									</ol>
-								{% endif %}
+								{% endif -%}
 							</li> 
-						{% endfor %}
+						{% endfor -%}
 					</ol>
 				</div>
 			</div>
-        {% endif %}
+        {% endif -%}
 
         {{ post_macros::header(page=page, is_localhost=is_localhost) }}
         {{ post_macros::content(page=page, summary=false, show_only_description=false) }}
 
-		{% if config.extra.enable_comments and not is_localhost -%}
+		{%- if config.extra.enable_comments and not is_localhost %}
             <div class="comments">
                 <div class="comments__title">
                     <span class="comments__title-h">Yorumlar</span>
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-			{% if config.extra.graphcomment_id %}
+			{%- if config.extra.graphcomment_id %}
 				<div id="graphcomment"></div>
 				<script>
 					var __semio__params = {
@@ -72,15 +72,15 @@
 
 		{% endif -%}
 
-		{% if config.extra.cc_copyright.enabled and not page.extra.hide_cc_copyright %}
-			{% if page.authors %}
+		{%- if config.extra.cc_copyright.enabled and not page.extra.hide_cc_copyright %}
+			{%- if page.authors %}
 				{% set author_text = page.authors | join(sep=", ") %}
 				{{ config.extra.cc_copyright.html 
 					| replace(from="{{author}}", to=author_text) 
 					| replace(from="{{work_link}}", to=current_url)
 					| safe }}
-			{% endif %}
-		{% endif %}
+			{% endif -%}
+		{% endif -%}
 
         {{ post_macros::earlier_later(page=page) }}
     </div>

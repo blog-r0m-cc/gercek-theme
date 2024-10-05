@@ -4,14 +4,14 @@
 {% import "macros/post.html" as post_macros -%}
 {% import "macros/title.html" as title_macros -%}
 
-{% set _current_url = current_url | default(value=config.base_url) %}
+{%- set _current_url = current_url | default(value=config.base_url) -%}
 
-{% if _current_url is containing("http://127.0.0.1") 
-   or _current_url is containing("http://localhost") %}
+{%- if _current_url is containing("http://127.0.0.1") 
+   or _current_url is containing("http://localhost") -%}
 	{% set is_localhost = true %}
-{% else %}
+{%- else -%}
 	{% set is_localhost = false %}
-{% endif %}
+{%- endif -%}
 
 <!DOCTYPE html>
 <html lang="{%- if config.default_language -%}{{ config.default_language }}{%- else -%}en{%- endif -%}">
