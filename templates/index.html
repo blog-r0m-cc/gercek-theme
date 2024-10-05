@@ -8,7 +8,9 @@
 
 {% if _current_url is containing("http://127.0.0.1") 
    or _current_url is containing("http://localhost") %}
-   {% set is_localhost = true %}
+	{% set is_localhost = true %}
+{% else %}
+	{% set is_localhost = false %}
 {% endif %}
 
 <!DOCTYPE html>
