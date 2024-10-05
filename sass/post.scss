@@ -6,6 +6,7 @@
 }
 
 .post {
+  position: relative;
   width: 100%;
   text-align: left;
   margin: 20px auto;
@@ -95,6 +96,50 @@
       position: absolute;
       left: -20px;
       color: var(--accent);
+    }
+  }
+
+  .toc-container {
+    position: sticky;
+    top: 0;
+
+    @media (max-width: 1400px) {
+      position: relative;
+      width: 100%;
+    }
+
+    .toc {
+      --toc-width: 15vw;
+      position: absolute;
+      right: calc(-1 * var(--toc-width) - 2rem);
+      width: var(--toc-width);
+      min-width: 200px;
+      margin-top: 1rem;
+      padding: 1rem;
+      backdrop-filter: brightness(80%);
+      border-top: 4px solid var(--accent);
+      border-bottom: 4px solid var(--accent);
+
+      @media (max-width: 1400px) {
+        position: relative;
+        left: 0;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .toc-header {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid;
+        padding-bottom: 4px;
+      }
+
+      .toc-item {
+        font-size: 1.15rem;
+        margin: 0.4rem 0;
+        list-style-position: outside;
+      }
     }
   }
 }
