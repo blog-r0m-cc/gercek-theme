@@ -72,6 +72,16 @@
 
 		{% endif -%}
 
+		{% if config.extra.cc_copyright.enabled and not page.extra.hide_cc_copyright %}
+			{% if page.authors %}
+				{% set author_text = page.authors | join(sep=", ") %}
+				{{ config.extra.cc_copyright.html 
+					| replace(from="{{author}}", to=author_text) 
+					| replace(from="{{work_link}}", to=current_url)
+					| safe }}
+			{% endif %}
+		{% endif %}
+
         {{ post_macros::earlier_later(page=page) }}
     </div>
 {% endblock content %}

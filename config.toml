@@ -120,3 +120,14 @@ page_titles = "main_only"
 #           If the page doesnt set og_image, use this one as fallback. Usefull
 #           for indexes and taxonomies' pages.
 #default_og_image = "static/ocean.jpg"
+
+# If enabled, Creative Commons license notice will be added to posts.
+[extra.cc_copyright]
+enabled = false
+
+# Replace the author name with {{author}}, and link to the work with {{work_link}} for dynamic population of these fields.
+# Use link below to create your own license:
+# https://chooser-beta.creativecommons.org/
+#
+# Example below is for CC BY-NC-ND 4.0.
+html = '<p xmlns:cc="http://creativecommons.org/ns#"><a rel="cc:attributionURL" href="{{work_link}}">This work</a> by <span property="cc:attributionName">{{author}}</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></a></p>'
