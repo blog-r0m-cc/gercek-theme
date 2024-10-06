@@ -265,6 +265,7 @@ div.footnote-definition {
 
   position: fixed;
   display: none;
+  z-index: 10;
 
   width: $background_size;
   height: $background_size;
