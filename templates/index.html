@@ -76,6 +76,13 @@
                     </div>
                 </a>
             </div>
+
+			<div class="header__search">
+				<input id="search" type="text" placeholder="Ara...">
+				<div class="search-results">
+					<ul class="search-results__items"></ul>
+				</div>
+			</div>
         </div>
 
 		{%- if config.extra.enable_random_quotes %}
@@ -163,6 +170,17 @@
 </div>
 {%- block extra_body %}
 {% endblock extra_body -%}
+
+{%- if config.build_search_index %}
+<script src="{{ get_url(path="elasticlunr.min.js", trailing_slash=false) | safe }}"></script>
+
+{%- if config.extra.search.enable_stemmer %}
+<script src="{{ get_url(path="js/lunr.stemmer.support.js", trailing_slash=false) | safe }}"></script>
+<script src="{{ get_url(path="js/lunr." ~ config.extra.search.stemmer_lang ~ ".js", trailing_slash=false) | safe }}"></script>
+{% endif -%}
+
+<script src="{{ get_url(path="core/js/search.js", trailing_slash=false) | safe }}"></script>
+{% endif -%}
 
 {%- if config.extra.enable_scroll_to_top_button %}
 <script src="{{ get_url(path="core/js/scroll.js", trailing_slash=false) | safe }}"></script>

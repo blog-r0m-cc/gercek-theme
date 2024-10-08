@@ -121,6 +121,10 @@ page_titles = "main_only"
 #           for indexes and taxonomies' pages.
 #default_og_image = "static/ocean.jpg"
 
+[extra.search]
+enable_stemmer = false
+stemmer_lang = ""
+
 # If enabled, Creative Commons license notice will be added to posts.
 [extra.cc_copyright]
 enabled = false
