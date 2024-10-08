@@ -15,9 +15,9 @@
   }
 
   @media (prefers-color-scheme: light) {
-    --accent: rgb(255, 86, 128);
-    --accent-alpha-70: rgba(255, 86, 128);
-    --accent-alpha-20: rgba(255, 86, 128, .2);
+    --accent: rgb(255, 130, 160);
+    --accent-alpha-70: rgba(255, 130, 160);
+    --accent-alpha-20: rgba(255, 130, 160, .2);
 
     --background: white;
     --color: #201030;
@@ -29,5 +29,5 @@
   }
 
   --scroll-to-top-bg-color: var(--accent);
-  --scroll-to-top-arrow-color: var(--color);
+  --scroll-to-top-arrow-color: #fff;
 }
