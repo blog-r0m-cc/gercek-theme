@@ -12,9 +12,9 @@
 			{% set add_br = False %}
 
 			{%- for sub_dir in page.extra.archive.dirs %}
-				{% set sub_section = get_section(path=sub_dir ~ "/_index.md") -%}
-				{% set post_count = sub_section.pages | length -%}
-				{% set title_type = sub_section.title | json_encode | as_str -%}
+				{%- set sub_section = get_section(path=sub_dir ~ "/_index.md") -%}
+				{%- set post_count = sub_section.pages | length -%}
+				{%- set title_type = sub_section.title | json_encode | as_str -%}
 
 				{%- if title_type == "null" or (post_count < 1 and page.extra.archive.skip_subsection_if_no_post) %}
 					{% continue %}
@@ -24,16 +24,16 @@
 					<br />
 				{% endif -%}
 
-				{%- if sub_section.title %}
+				{%- if sub_section.title -%}
 					<h2>{{ sub_section.title }}</h2>
-				{% endif -%}
-				{%- if post_count > 0 %}
+				{%- endif -%}
+				{%- if post_count > 0 -%}
 					{{ post_macros::list_posts(pages=sub_section.pages) }}
-				{% else %}
+				{%- else -%}
 					<p>Herhangi bir yazı bulunamadı.</p>
-				{% endif -%}
+				{%- endif -%}
 
-				{% set_global add_br = True %}
-			{% endfor -%}
+				{%- set_global add_br = True -%}
+			{%- endfor -%}
     </div>
 {% endblock content %}
