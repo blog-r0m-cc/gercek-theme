@@ -9,16 +9,18 @@
         <h1 class="post-title">{{ page.title }}</h1>
 
         {%- set section = get_section(path="_index.md") -%}
-			{%- for sub_dir in page.extra.archive_dirs %}
+			{% set add_br = False %}
+
+			{%- for sub_dir in page.extra.archive.dirs %}
 				{% set sub_section = get_section(path=sub_dir ~ "/_index.md") -%}
 				{% set post_count = sub_section.pages | length -%}
 				{% set title_type = sub_section.title | json_encode | as_str -%}
 
-				{%- if title_type == "null" %}
+				{%- if title_type == "null" or (post_count < 1 and page.extra.archive.skip_subsection_if_no_post) %}
 					{% continue %}
 				{% endif -%}
 
-				{%- if not loop.first %}
+				{%- if not loop.first and add_br %}
 					<br />
 				{% endif -%}
 
@@ -30,6 +32,8 @@
 				{% else %}
 					<p>Herhangi bir yazı bulunamadı.</p>
 				{% endif -%}
+
+				{% set_global add_br = True %}
 			{% endfor -%}
     </div>
 {% endblock content %}
