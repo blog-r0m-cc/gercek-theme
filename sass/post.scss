@@ -18,6 +18,7 @@
 
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--border-color);
+    margin-bottom: 0;
   }
 
   %meta {
