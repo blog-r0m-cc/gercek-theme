@@ -111,6 +111,10 @@
 
 			{% if page_len >= 1 %}
 				{%- for page in show_pages %}
+					{%- if page.extra.hide_from_main_page %}
+						{% continue %}
+					{% endif -%}
+
 					<div class="post on-list">
 						{{ post_macros::header(page=page, is_localhost=is_localhost) }}
 
